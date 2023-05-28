@@ -1,11 +1,30 @@
 import React from 'react';
+import { FaPlus, FaThumbsUp, FaThumbsDown, FaSave } from 'react-icons/fa';
 
-const Dashboard = ( { setInput, handleAdd, info } ) => {
+const Dashboard = ({ 
+  setNewTopic,
+  handleAdd,
+  setAnswerView,
+  answerView,
+  handleChangeStatus,
+  handleSave
+}) => {
   return (
     <div className='dashboard'>
-      <input type='text' onChange={(e) => {setInput(e.target.value)}} />
-      <button type='button' onClick={handleAdd}>ADD</button>
-      <p className='view'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div>
+        <input type='text' id='newTopic' placeholder='New topic...'
+          onChange={(e) => {setNewTopic(e.target.value)}} />
+        <button type='button' id='addTopicBtn' 
+          onClick={handleAdd}><FaPlus/></button>
+      </div>
+      <textarea id='answerView' value={answerView}
+        onChange={(e) => {setAnswerView(e.target.value)}}></textarea>
+      <div>
+        <button type='button' id='saveAnswerBtn'
+          onClick={handleSave}><FaSave/></button>
+        <button type='button' id='changeStatusBtn'
+          onClick={handleChangeStatus}><FaThumbsUp/>  /  <FaThumbsDown/></button>
+      </div>
     </div>
   );
 };

@@ -26,9 +26,21 @@ app.post('/answer',
   dbController.readDB,
   dbController.addAnswer,
   (req, res) => {
-    res.status(200).json({"hello":"hello"});
+    res.status(200).json(res.locals.db);
   }
 );
+
+app.post('/status',
+  dbController.readDB,
+  dbController.changeStatus,
+  (req, res) => {
+    res.status(200).json(res.locals.db);
+  }
+);
+
+app.use((req, res) => {
+  res.status(404).send('Cannot find page!');
+});
 
 app.use((err, req, res, next) => {
   const defaultErr = {

@@ -2,9 +2,8 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
-// MAKE SURE TO ADD DONE FUNCTIONALITY TO CARDS
-
 const dbController = {
+  
   readDB: (req, res, next) => {
     fs.readFile(path.resolve(__dirname, 'db.json'), 'utf8', (err, data) => {
       if (err) {
@@ -53,7 +52,7 @@ const dbController = {
     const db = res.locals.db;
     // topicId and answer received from client
     const { topicId, answer } = req.body;
-    db[`topic${topicId}`].answer = answer;
+    db[topicId].answer = answer;
 
     const data = JSON.stringify(db);
 
@@ -63,6 +62,27 @@ const dbController = {
           log: 'Error handler for dbController',
           status: 401,
           message: {err: 'Error writing to database file'}
+        };
+        return next(err);
+      }
+    });
+    res.locals.db = db;
+    return next();
+  },
+
+  changeStatus: (req, res, next) => {
+    const db = res.locals.db;
+    const { topicId } = req.body;
+    db[topicId].done = db[topicId].done ? false : true;
+    
+    const data = JSON.stringify(db);
+
+    fs.writeFile(path.resolve(__dirname, 'db.json'), data, (err) => {
+      if (err) {
+        const err = {
+          log: 'Error handler for dbController',
+          status: 401,
+          message: {err: 'Error updating status in database file'}
         };
         return next(err);
       }

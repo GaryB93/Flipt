@@ -1,12 +1,10 @@
 import React from 'react';
 
-const Topic = () => {
+const Topic = ({ topicObj, id, setCurrTopic, currTopic }) => {
   return (
-    <div className='topic'>
-      <p>React</p>
-      <button type='button' >View</button>
-      <button type='button' >Done</button>
-    </div>
+    <button className={'topic ' + (topicObj.done ? 'done ' : '') + (currTopic === id ? 'selected' : '')} onClick={() => {setCurrTopic(id)}}>
+      {topicObj.topic}
+    </button>
   )
 };
 
