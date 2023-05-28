@@ -69,6 +69,7 @@ header {
 
 #answerView {
   flex: 1;
+  max-height: 600px;
   background-color: rgb(200, 200, 200);
   padding: 20px;
   border: 1px solid black;

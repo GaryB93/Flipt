@@ -17,7 +17,7 @@ const Dashboard = ({
         <button type='button' id='addTopicBtn' 
           onClick={handleAdd}><FaPlus/></button>
       </div>
-      <textarea id='answerView' value={answerView}
+      <textarea id='answerView' value={answerView} placeholder='Notes...'
         onChange={(e) => {setAnswerView(e.target.value)}}></textarea>
       <div>
         <button type='button' id='saveAnswerBtn'
