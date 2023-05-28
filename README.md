@@ -6,6 +6,8 @@ A simple way to visualize your software engineer interviewing journey.
 
 Let's get into how you can use this repo:
 
+Make sure you have Node installed on your machine.
+
 1. Fork or clone this repo onto your local machine.
 2. npm install
 3. npm run dev
