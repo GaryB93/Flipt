@@ -2,7 +2,7 @@ Welcome to Interview Prep Beta!
 
 A simple way to visualize your software engineer interviewing journey.
 
-<img alt='interview prep application' src='public/InterviewPrep.png' width='400px'>
+<img alt='interview prep application' src='public/InterviewPrep.png' width='600px'>
 
 Let's get into how you can use this repo:
 
