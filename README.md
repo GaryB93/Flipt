@@ -25,4 +25,4 @@ If at anytime you want to clear your board, simply replace everything in your 'd
 There is currently no delete feature.
 
 
-I hope this helps any fellow software engineers land there next dream career!
+I hope this helps any fellow software engineers land their next dream career!
