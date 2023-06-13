@@ -1,0 +1,24 @@
+@import './Colors.module.scss';
+
+.topic {
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  width: 200px;
+  height: 150px;
+  box-shadow: 2px 2px 10px $dark-gray;
+  background-color: $light-light-gray;
+  margin: 20px;
+  border: none;
+  border-radius: 0.5em;
+}
+
+.topic:hover, .currTopic {
+  border: 3px solid $orange;
+}
+
+.done {
+  background-image: radial-gradient(rgb(163, 163, 163), rgb(20, 154, 53));
+}

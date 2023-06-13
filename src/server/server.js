@@ -1,40 +1,44 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const port = 3000;
 
 app.use(express.json());
+app.use(express.static('dist'));
 app.use(express.urlencoded({extended: true}));
 
-const dbController = require('./controller.js');
+const dataController = require('./controllers/dataController.js');
+const userController = require('./controllers/userController.js');
 
-app.get('/topics',
-  dbController.readDB,
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
+
+app.post('/login',
+userController.verifyUser,
+(req, res) => {
+  res.status(200).json(res.locals.verified);
+}
+);
+
+app.post('/createAccount',
+userController.createUser,
+(req, res) => {
+  res.status(200).json(res.locals.created);
+}
+);
+
+app.get('/user_data/:username', 
+  dataController.getData,
   (req, res) => {
-    res.status(200).json(res.locals.db);
+    res.status(200).json(res.locals.categories);
   }
 );
 
-app.post('/addtopic',
-  dbController.readDB,
-  dbController.addTopic,
+app.patch('/update',
+  dataController.updateCategories,
   (req, res) => {
-    res.status(200).json(res.locals.db);
-  }
-);
-
-app.post('/answer',
-  dbController.readDB,
-  dbController.addAnswer,
-  (req, res) => {
-    res.status(200).json(res.locals.db);
-  }
-);
-
-app.post('/status',
-  dbController.readDB,
-  dbController.changeStatus,
-  (req, res) => {
-    res.status(200).json(res.locals.db);
+    res.status(200).json(res.locals.categories);
   }
 );
 

@@ -1,8 +1,31 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client'
-import App from './components/App';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import ErrorPage from './pages/Error';
+import NewAccount from './pages/NewAccount/NewAccount';
+import './styles.scss';
 
-import styles from './styles.css'
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Login/>,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: '/home',
+    element: <Home/>,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: '/newAccount',
+    element: <NewAccount/>,
+    errorElement: <ErrorPage/>
+  }
+]);
 
 const root = createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <RouterProvider router={router} />
+);

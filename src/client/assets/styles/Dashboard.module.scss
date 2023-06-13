@@ -1,0 +1,102 @@
+@import './Colors.module.scss';
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 10px;
+  background-color: $almost-white;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    padding: 10px 0;
+    border-top: 1px solid $light-gray;
+  }
+
+  #categories {
+    height: 150px;
+    margin: 5px 10px;
+    overflow-y: auto;
+
+    .category {
+      display: flex;
+      margin-bottom: 5px;
+
+      button:nth-of-type(1) {
+        flex: 4;
+        border-right: none;
+        padding: 5px;
+        background-color: $light-light-gray;
+      }
+
+      button:nth-of-type(2) {
+        flex: 1;
+        border-left: none;
+        background-color: $light-light-gray;
+      }
+
+      button:hover {
+        background-color: $light-gray;
+      }
+    }
+
+    .current {
+      button:nth-of-type(1) {
+        background-color: $orange;
+      }
+
+      button:nth-of-type(2) {
+        background-color: $orange;
+      }
+
+      button:hover {
+        background-color: $dark-orange;
+      }
+    }
+  }
+  
+  #newCategory {
+    margin: 5px 10px;
+    padding: 5px;
+  }
+
+  #addCategoryBtn {
+    margin: 0 10px 20px 10px;
+    padding: 5px;
+  }
+  
+  #newTopic {
+    margin: 0 10px;
+    padding: 5px;
+  }
+}
+
+.dashboard button {
+  background-color: $orange;
+}
+
+.dashboard button:hover {
+  background-color: $dark-orange;
+}
+
+#answerView {
+  flex: 1;
+  max-height: 600px;
+  padding: 5px;
+  margin: 10px;
+  resize: none;
+}
+
+#saveTopicBtn {
+  margin: 0 10px;
+  padding: 5px;
+}
+
+#changeStatusBtn {
+  margin: 5px 10px 0 10px;
+  padding: 5px;
+}

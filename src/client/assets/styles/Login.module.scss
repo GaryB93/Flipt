@@ -1,0 +1,43 @@
+@import './Colors.module.scss';
+
+.login-page {
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  background-image: linear-gradient($dark-purple, $light-purple);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  padding: 1em;
+  border: 1px solid $med-gray;
+  width: 300px;
+  background-color: $almost-white;
+  border-radius: 0.5em;
+  box-shadow: 2px 2px 10px $med-gray, -2px -2px 10px $med-gray;
+
+  h2 {
+    margin-bottom: 1.8em;
+    text-align: center;
+  }
+
+  input {
+    font-size: .9em;
+    height: 30px;
+    width: 200px;
+    text-align: center;
+    margin: 0.2em 0 1.3em 0;
+    border: 1px solid $light-gray;
+    background-color: $white;
+  }
+
+  .login-btn {
+    height: 30px;
+    margin-bottom: 30px;
+    background-color: $orange;
+    border: 1px solid $light-gray;
+  }
+}
