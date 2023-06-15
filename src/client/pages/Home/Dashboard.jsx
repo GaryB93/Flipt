@@ -13,8 +13,10 @@ const Dashboard = ({
   setAnswerText,
   handleSelectCategory,
   handleAddCategory,
-  handleDeleteCategory
+  handleDeleteCategory,
+  handleSave
 }) => {
+  
   const categoriesArr = [];
  
   for (const category of categories) {
@@ -43,12 +45,13 @@ const Dashboard = ({
       <button type='button' id='addCategoryBtn' 
         onClick={handleAddCategory}>Add Category</button>
       <h2>Topic</h2>
+
       <input type='text' id='newTopic' value={topicInput} placeholder='New topic...'
         onChange={(e) => {setTopicInput(e.target.value)}} />
       <textarea id='answerView' value={answerText} placeholder='Notes...'
         onChange={(e) => {setAnswerText(e.target.value)}}></textarea>
       <button type='button' id='saveTopicBtn'
-        >Add/Save</button>
+        onClick={handleSave}><FaSave/></button>
       <button type='button' id='changeStatusBtn'
         ><FaThumbsUp/>  /  <FaThumbsDown/></button>
     </div>

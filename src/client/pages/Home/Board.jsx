@@ -6,7 +6,7 @@ const Board = ({
   setTopicInput,
   setAnswerText,
   setCurrTopic,
-  currTopic
+  currTopic,
   }) => {
   const topicsArray = [];
 

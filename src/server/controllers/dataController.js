@@ -20,7 +20,7 @@ const dataController = {
 
   updateCategories: async (req, res, next) => {
     const { username, categories } = req.body;
-
+    // console.log(categories);
     try {
       const user = await User.findOneAndUpdate(
         {username: username}, 
