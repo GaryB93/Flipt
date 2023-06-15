@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  background-image: linear-gradient($dark-purple, $light-purple);
+  background-image: radial-gradient($light-gray, $dark-gray);
 }
 
 .login-form {
@@ -17,7 +17,7 @@
   width: 300px;
   background-color: $almost-white;
   border-radius: 0.5em;
-  box-shadow: 2px 2px 10px $med-gray, -2px -2px 10px $med-gray;
+  box-shadow: 2px 2px 10px $black;
 
   h2 {
     margin-bottom: 1.8em;
@@ -35,9 +35,19 @@
   }
 
   .login-btn {
-    height: 30px;
+    padding: 5px;
+    border: none;
     margin-bottom: 30px;
     background-color: $blue;
-    border: 1px solid $light-gray;
+    color: $white;
+    box-shadow: 2px 2px 2px 0 black;
+  }
+
+  .login-btn:hover {
+    background-color: $dark-blue;
+  }
+
+  .login-btn:active {
+    transform: translateY(3px);
   }
 }

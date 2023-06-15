@@ -20,6 +20,7 @@ const Home = () => {
   },[]);
 
   const updateDatabase = (categories) => {
+    const categoryName = currCategory.category;
     // make patch request to update categories list
     fetch('/update', {
       method: 'PATCH',
@@ -34,6 +35,11 @@ const Home = () => {
     .then(res => res.json())
     .then(data => {
       setCategories(data);
+        for (const category of data) {
+          if (category.category === categoryName) {
+            setCurrCategory(category);
+          }
+        }
     })
     .catch((err) => {console.log({err: 'Error updating database'})});
   };
@@ -91,27 +97,47 @@ const Home = () => {
           }
         }
       }
-      // make patch request to update categories list
-      fetch('/update', {
-        method: 'PATCH',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify({
-          username: username,
-          categories: categoriesCopy
-        })
-      })
-      .then(res => res.json())
-      .then(data => {
-        setCategories(data);
-        for (const category of data) {
-          if (category.category === categoryName) {
-            setCurrCategory(category);
+      updateDatabase(categoriesCopy);
+    }
+  };
+
+  const handleDeleteTopic = () => {
+    if (topicInput) {
+      const currTopicName = currTopic.topic;
+      const currCategoryName = currCategory.category;
+      const categoriesCopy = JSON.parse(JSON.stringify(categories));
+      for (const category of categoriesCopy) {
+        if (category.category === currCategoryName) {
+          const newTopics = [];
+          category.topics.forEach((topic) => {
+            if (topic.topic !== currTopicName) {
+              newTopics.push(topic);
+            }
+          });
+          category.topics = newTopics;
+        }
+      }
+      updateDatabase(categoriesCopy);
+    }
+  };
+
+  const handleStatusChange = () => {
+    if (topicInput) {
+      const currTopicName = currTopic.topic;
+      const currCategoryName = currCategory.category;
+      const categoriesCopy = JSON.parse(JSON.stringify(categories));
+      // iterate through categories array
+      for (const category of categoriesCopy) {
+        if (category.category === currCategoryName) {
+          // iterate through topics
+          for (const topic of category.topics) {
+            if (topic.topic === currTopicName) {
+              topic.done = (topic.done === false ? true : false);
+            }
           }
         }
-      })
-      .catch((err) => {console.log({err: 'Error updating database'})});
+      }
+      updateDatabase(categoriesCopy);
     }
   };
 
@@ -127,6 +153,8 @@ const Home = () => {
         handleSelectCategory={handleSelectCategory}
         handleDeleteCategory={handleDeleteCategory}
         handleSave={handleSave}
+        handleStatusChange={handleStatusChange}
+        handleDeleteTopic={handleDeleteTopic}
         updateDatabase={updateDatabase}
       />
       <Board

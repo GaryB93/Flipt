@@ -8,22 +8,19 @@
   align-content: center;
   width: 200px;
   height: 150px;
-  box-shadow: 20px 20px 0px 7px $dark-gray;
+  box-shadow: 10px 10px 5px 0px $dark-gray;
   background-color: $light-light-gray;
   margin: 20px;
   padding: 5px;
   border: none;
-  border-radius: 0.5em;
+  // border-radius: 0.5em;
+  word-wrap: break-word;
 }
 
-.topic:hover, .currTopic {
-  border: 3px solid $blue;
-}
-
-.topic:active {
-  transform: translateY(10px);
+.currTopic {
+  background-color: $blue;
 }
 
 .done {
-  background-image: radial-gradient(rgb(163, 163, 163), rgb(20, 154, 53));
+  opacity: 0.4;
 }

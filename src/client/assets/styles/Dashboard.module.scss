@@ -1,10 +1,11 @@
 @import './Colors.module.scss';
 
 .dashboard {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   width: 300px;
-  padding: 10px;
+  padding: 20px;
   background-color: $almost-white;
 
   h1 {
@@ -13,9 +14,13 @@
   }
 
   h2 {
-    font-size: 1.3em;
+    font-size: 1.2em;
     padding: 10px 0;
     border-top: 1px solid $light-gray;
+  }
+
+  label {
+    font-size: 0.9em;
   }
 
   #categories {
@@ -60,47 +65,75 @@
   }
   
   #newCategory {
-    margin: 5px 10px;
+    margin-bottom: 5px;
     padding: 5px;
   }
 
   #addCategoryBtn {
-    margin: 0 10px 20px 10px;
+    margin-bottom: 20px;
+    background-color: $blue;
+    box-shadow: 2px 2px 2px 0 black;
+  }
+
+  #addCategoryBtn:hover {
+    background-color: $dark-blue;
   }
   
-  #newTopic {
-    margin: 0 10px;
+  #topic {
+    margin-bottom: 10px;
     padding: 5px;
   }
 }
 
 .dashboard button {
   border: none;
-  border-radius: 8px;
-  padding: 8px;
-  background-color: $blue;
+  padding: 5px;
   color: $white;
-  opacity: 0.6;
 }
 
-.dashboard button:hover {
-  opacity: 1;
+.dashboard button:active {
+  transform: translateY(3px);
 }
 
 #answerView {
   flex: 1;
   max-height: 600px;
   padding: 5px;
-  margin: 10px;
+  margin-bottom: 10px;
   resize: none;
 }
 
+#topicBtns {
+  display: flex;
+  margin-bottom: 10px;
+}
+
 #saveTopicBtn {
-  margin: 0 10px;
-  padding: 8px;
+  flex: 1;
+  margin-right: 5px;
+  background-color: $blue;
+  box-shadow: 2px 2px 2px 0 black;
+}
+
+#saveTopicBtn:hover {
+  background-color: $dark-blue;
 }
 
 #changeStatusBtn {
-  margin: 5px 10px 0 10px;
-  padding: 8px;
+  flex: 1;
+  background-color: $blue;
+  box-shadow: 2px 2px 2px 0 black;
+}
+
+#changeStatusBtn:hover {
+  background-color: $dark-blue;
+}
+
+#deleteTopicBtn {
+  background-color: $red;
+  box-shadow: 2px 2px 2px 0 black;
+}
+
+#deleteTopicBtn:hover {
+  background-color: $dark-red;
 }

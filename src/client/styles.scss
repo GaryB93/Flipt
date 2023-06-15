@@ -27,3 +27,21 @@ button {
   display: flex;
   height: 100%;
 }
+
+// Scrollbar Styles
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $light-light-gray;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $blue;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $dark-blue;
+}

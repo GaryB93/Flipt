@@ -12,6 +12,8 @@ const Dashboard = ({
   handleSelectCategory,
   handleDeleteCategory,
   handleSave,
+  handleStatusChange,
+  handleDeleteTopic,
   updateDatabase
 }) => {
   // input field for new category, 'String'
@@ -56,19 +58,24 @@ const Dashboard = ({
       <div id='categories'>
         {categoriesArr}
       </div>
-      <input type='text' id='newCategory' value={categoryInput} maxLength={30} placeholder='New category...'
-        onChange={(e) => {setCategoryInput(e.target.value)}} />
-      <button type='button' id='addCategoryBtn' 
-        onClick={handleAddCategory}>Add Category</button>
-      <h2>Topic</h2>
-      <input type='text' id='newTopic' value={topicInput} placeholder='New topic...'
+      <label htmlFor='newCategory'>New Category</label>
+      <input type='text' id='newCategory' name='newCategory' autocomplete='off'
+        value={categoryInput} maxLength={30} onChange={(e) => {setCategoryInput(e.target.value)}} />
+      <button type='button' id='addCategoryBtn' onClick={handleAddCategory}>Add</button>
+
+      <label htmlFor='topic'>Topic</label>
+      <input type='text' id='topic' name='topic' value={topicInput} maxLength={150}
         onChange={(e) => {setTopicInput(e.target.value)}} />
-      <textarea id='answerView' value={answerText} placeholder='Notes...'
+      <label htmlFor='answerView'>Answer/Notes</label>
+      <textarea id='answerView' name='answerView' value={answerText}
         onChange={(e) => {setAnswerText(e.target.value)}}></textarea>
-      <button type='button' id='saveTopicBtn'
-        onClick={handleSave}><FaSave/></button>
-      <button type='button' id='changeStatusBtn'
-        ><FaThumbsUp/>  /  <FaThumbsDown/></button>
+      <div id='topicBtns'>
+        <button type='button' id='saveTopicBtn'
+          onClick={handleSave}><FaSave/></button>
+        <button type='button' id='changeStatusBtn' onClick={handleStatusChange}
+          ><FaThumbsUp/>  /  <FaThumbsDown/></button>
+      </div>
+      <button type='button' id='deleteTopicBtn' onClick={handleDeleteTopic}>Delete</button>
     </div>
   );
 };

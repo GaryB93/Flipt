@@ -18,7 +18,7 @@ const userController = {
               message: {err: 'Unable to compare passwords'}
             });
           }
-          res.locals.verified = result ? true : false;
+          res.locals.verified = result;
           return next();
         });
         // incorrect username provided
