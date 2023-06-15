@@ -5,7 +5,6 @@ import Board from './Board';
 const Home = () => {
   const username = sessionStorage.getItem('username');
   const [categories, setCategories] = useState([]);   // categories of user, 'Array'
-  const [categoryInput, setCategoryInput] = useState('');   // input field for category, 'String'
   const [topicInput, setTopicInput] = useState('');   // input field for topic, 'String'
   const [answerText, setAnswerText] = useState('');   // text area for answers/notes, 'String'
   const [currCategory, setCurrCategory] = useState(); // current category highlighted, 'Object'
@@ -46,22 +45,6 @@ const Home = () => {
     setAnswerText('');
   };
 
-  const handleAddCategory = () => {
-    if(categoryInput) {
-      // deep copy array of categories
-      const categoriesCopy = JSON.parse(JSON.stringify(categories));
-      // create new category object to be added
-      const newCategory = {
-        category: categoryInput,
-        topics: []
-      }
-      // add new category to array of categories
-      categoriesCopy.push(newCategory);
-      updateDatabase(categoriesCopy);
-      setCategoryInput('');
-    }
-  };
-
   const handleDeleteCategory = (category) => {
     // filter category to be removed from categories
     const newCategories = [];
@@ -79,8 +62,6 @@ const Home = () => {
     if (topicInput && currCategory) {
       // copy categories (Array))
       const categoriesCopy = JSON.parse(JSON.stringify(categories));
-      // copy category (Object)
-      const categoryCopy = JSON.parse(JSON.stringify(currCategory));
       // current category name (String)
       const categoryName = currCategory.category;
       // assume topic is new
@@ -100,11 +81,13 @@ const Home = () => {
           }
           // if topic doesn't exist, add new topic
           if (!topicExists) {
-            category.topics.push({
+            const newTopic = {
               topic: topicInput,
               answer: answerText,
               done: false
-            });
+            }
+            category.topics.push(newTopic);
+            setCurrTopic(newTopic);
           }
         }
       }
@@ -135,8 +118,6 @@ const Home = () => {
   return (
     <div className='page'>
       <Dashboard
-        categoryInput={categoryInput}
-        setCategoryInput={setCategoryInput}
         categories={categories}
         currCategory={currCategory}
         topicInput={topicInput}
@@ -144,9 +125,9 @@ const Home = () => {
         answerText={answerText}
         setAnswerText={setAnswerText}
         handleSelectCategory={handleSelectCategory}
-        handleAddCategory={handleAddCategory}
         handleDeleteCategory={handleDeleteCategory}
         handleSave={handleSave}
+        updateDatabase={updateDatabase}
       />
       <Board
         currCategory={currCategory}

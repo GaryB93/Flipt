@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaThumbsUp, FaThumbsDown, FaSave } from 'react-icons/fa';
 import Category from './Category';
 
 const Dashboard = ({
-  categoryInput,
-  setCategoryInput,
   categories,
   currCategory,
   topicInput,
@@ -12,11 +10,13 @@ const Dashboard = ({
   answerText,
   setAnswerText,
   handleSelectCategory,
-  handleAddCategory,
   handleDeleteCategory,
-  handleSave
+  handleSave,
+  updateDatabase
 }) => {
-  
+  // input field for new category, 'String'
+  const [categoryInput, setCategoryInput] = useState('');
+  // store Category components
   const categoriesArr = [];
  
   for (const category of categories) {
@@ -31,6 +31,22 @@ const Dashboard = ({
     );
   }
 
+  const handleAddCategory = () => {
+    if(categoryInput) {
+      // deep copy array of categories
+      const categoriesCopy = JSON.parse(JSON.stringify(categories));
+      // create new category object to be added
+      const newCategory = {
+        category: categoryInput,
+        topics: []
+      }
+      // add new category to array of categories
+      categoriesCopy.push(newCategory);
+      updateDatabase(categoriesCopy);
+      setCategoryInput('');
+    }
+  };
+
   return (
     <div className='dashboard'>
       <header>
@@ -40,12 +56,11 @@ const Dashboard = ({
       <div id='categories'>
         {categoriesArr}
       </div>
-      <input type='text' id='newCategory' value={categoryInput} placeholder='New category...'
+      <input type='text' id='newCategory' value={categoryInput} maxLength={30} placeholder='New category...'
         onChange={(e) => {setCategoryInput(e.target.value)}} />
       <button type='button' id='addCategoryBtn' 
         onClick={handleAddCategory}>Add Category</button>
       <h2>Topic</h2>
-
       <input type='text' id='newTopic' value={topicInput} placeholder='New topic...'
         onChange={(e) => {setTopicInput(e.target.value)}} />
       <textarea id='answerView' value={answerText} placeholder='Notes...'

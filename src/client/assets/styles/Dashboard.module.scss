@@ -13,6 +13,7 @@
   }
 
   h2 {
+    font-size: 1.3em;
     padding: 10px 0;
     border-top: 1px solid $light-gray;
   }
@@ -24,37 +25,36 @@
 
     .category {
       display: flex;
-      margin-bottom: 5px;
+      border-bottom: 1px solid $light-gray;
 
       button:nth-of-type(1) {
-        flex: 4;
-        border-right: none;
-        padding: 5px;
-        background-color: $light-light-gray;
+        flex: 1;
+        text-align: left;
+        border: none;
+        color: $light-gray;
+        background-color: $almost-white;
+        padding: 8px;
       }
 
       button:nth-of-type(2) {
-        flex: 1;
-        border-left: none;
-        background-color: $light-light-gray;
+        border: none;
+        padding: 8px;
+        color: $light-gray;
+        background-color: $almost-white;
       }
 
       button:hover {
-        background-color: $light-gray;
+        color: $black;
       }
     }
 
     .current {
       button:nth-of-type(1) {
-        background-color: $orange;
+        color: $black;
       }
 
       button:nth-of-type(2) {
-        background-color: $orange;
-      }
-
-      button:hover {
-        background-color: $dark-orange;
+        color: $black;
       }
     }
   }
@@ -66,7 +66,6 @@
 
   #addCategoryBtn {
     margin: 0 10px 20px 10px;
-    padding: 5px;
   }
   
   #newTopic {
@@ -76,11 +75,16 @@
 }
 
 .dashboard button {
-  background-color: $orange;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: $blue;
+  color: $white;
+  opacity: 0.6;
 }
 
 .dashboard button:hover {
-  background-color: $dark-orange;
+  opacity: 1;
 }
 
 #answerView {
@@ -93,10 +97,10 @@
 
 #saveTopicBtn {
   margin: 0 10px;
-  padding: 5px;
+  padding: 8px;
 }
 
 #changeStatusBtn {
   margin: 5px 10px 0 10px;
-  padding: 5px;
+  padding: 8px;
 }
