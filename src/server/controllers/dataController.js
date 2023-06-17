@@ -4,9 +4,13 @@ const User = require('../studyBoardModels');
 const dataController = {
   
   getData: async (req, res, next) => {
-    const username = req.params.username;
+    const userId = req.cookies.ssid;
+    if (!userId) {
+      res.locals.categories = false;
+      return next();
+    }
     try {
-      const user = await User.findOne({username: username}).exec();
+      const user = await User.findOne({_id: userId}).exec();
       res.locals.categories = user.categories;
       return next();
     } catch (err) {
@@ -19,12 +23,13 @@ const dataController = {
   },
 
   updateCategories: async (req, res, next) => {
-    const { username, categories } = req.body;
-    // console.log(categories);
+    const { categories } = req.body;
+    const userId = req.cookies.ssid;
+    
     try {
       const user = await User.findOneAndUpdate(
-        {username: username}, 
-        {categories: categories}, 
+        {_id: userId},
+        {categories: categories},
         {returnDocument: 'after'}
       ).exec();
       res.locals.categories = user.categories;

@@ -18,6 +18,7 @@ const NewAccount = () => {
     .then(res => res.json())
     .then(data => {
       if (data) {
+        console.log(data);
         navigate('/home');
       }
     })
@@ -31,11 +32,11 @@ const NewAccount = () => {
       <form className='login-form' onSubmit={handleSubmit}>
         <h2>Study Board</h2>
         <label htmlFor='newUsername'>Username</label>
-        <input name='newUsername' id='newUsername' type='text' 
+        <input name='newUsername' id='newUsername' type='text' autoComplete='off' required
           onChange={(e) => {setUsername(e.target.value)}}>
         </input>
         <label htmlFor='newPassword'>Password</label>
-        <input name='newPassword' id='newPassword' type='password'
+        <input name='newPassword' id='newPassword' type='password' required
           onChange={(e) => {setPassword(e.target.value)}}>
         </input>
         <button className='login-btn' type='submit'>Create Account</button>

@@ -44,8 +44,8 @@ const Dashboard = ({
       }
       // add new category to array of categories
       categoriesCopy.push(newCategory);
-      updateDatabase(categoriesCopy);
       setCategoryInput('');
+      updateDatabase(categoriesCopy);
     }
   };
 
@@ -59,12 +59,12 @@ const Dashboard = ({
         {categoriesArr}
       </div>
       <label htmlFor='newCategory'>New Category</label>
-      <input type='text' id='newCategory' name='newCategory' autocomplete='off'
+      <input type='text' id='newCategory' name='newCategory' autoComplete='off'
         value={categoryInput} maxLength={30} onChange={(e) => {setCategoryInput(e.target.value)}} />
       <button type='button' id='addCategoryBtn' onClick={handleAddCategory}>Add</button>
 
       <label htmlFor='topic'>Topic</label>
-      <input type='text' id='topic' name='topic' value={topicInput} maxLength={150}
+      <input type='text' id='topic' name='topic' value={topicInput} maxLength={150} autoComplete='off'
         onChange={(e) => {setTopicInput(e.target.value)}} />
       <label htmlFor='answerView'>Answer/Notes</label>
       <textarea id='answerView' name='answerView' value={answerText}

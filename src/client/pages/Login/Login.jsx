@@ -17,8 +17,8 @@ const Login = () => {
     })
     .then(res => res.json())
     .then(data => {
+      console.log(data);
       if (data === true) {
-        sessionStorage.setItem('username', username);
         navigate('/home');
       }
     })
@@ -32,7 +32,7 @@ const Login = () => {
       <form className='login-form' onSubmit={handleSubmit}>
         <h2>Study Board</h2>
         <label htmlFor='username'>Username</label>
-        <input name='username' id='username' type='text' required
+        <input name='username' id='username' type='text' autoComplete='off' required
           onChange={(e) => {setUsername(e.target.value)}}>
         </input>
         <label htmlFor='password'>Password</label>
@@ -40,7 +40,7 @@ const Login = () => {
           onChange={(e) => {setPassword(e.target.value)}}>
         </input>
         <button className='login-btn' type='submit'>Login</button>
-        <Link to={'/newAccount'}>Create Account</Link>
+        <Link to={'/create_account'}>Create Account</Link>
       </form>
     </div>
   )

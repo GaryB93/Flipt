@@ -1,26 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import Board from './Board';
 
 const Home = () => {
-  const username = sessionStorage.getItem('username');
   const [categories, setCategories] = useState([]);   // categories of user, 'Array'
   const [topicInput, setTopicInput] = useState('');   // input field for topic, 'String'
   const [answerText, setAnswerText] = useState('');   // text area for answers/notes, 'String'
   const [currCategory, setCurrCategory] = useState(); // current category highlighted, 'Object'
   const [currTopic, setCurrTopic] = useState();   // current topic highlighted, 'Object'
+  const navigate = useNavigate();
 
   // this effect executes once to retrieve categories for user
   useEffect(() => {
-    fetch(`/user_data/${username}`)
+    fetch('/userData')
     .then(response => response.json())
     .then(data => {
-      setCategories(data);
+      if (!data) {
+        navigate('/');
+      } else {
+        setCategories(data);
+      }
     });
   },[]);
 
   const updateDatabase = (categories) => {
-    const categoryName = currCategory.category;
+    let categoryName;
+    if (currCategory) {
+      categoryName = currCategory.category;
+    } else {
+      categoryName = '';
+    }
     // make patch request to update categories list
     fetch('/update', {
       method: 'PATCH',
@@ -28,7 +38,6 @@ const Home = () => {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
-        username: username,
         categories: categories
       })
     })
@@ -118,6 +127,8 @@ const Home = () => {
         }
       }
       updateDatabase(categoriesCopy);
+      setTopicInput('');
+      setAnswerText('');
     }
   };
 
