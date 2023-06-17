@@ -22,7 +22,6 @@ module.exports = {
             '/': 'http://localhost:3000',
         }
     },
-    devtool: 'inline-source-map',
     module: {
         rules: [
             {

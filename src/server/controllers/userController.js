@@ -6,22 +6,19 @@ const userController = {
 
   verifyUser: async (req, res, next) => {
     const { username, password } = req.body;
+    
     try {
       const user = await User.findOne({username: username}).exec();
       // if username is found, test against hashed password
       if (user) {
-        bcrypt.compare(password, user.password, (err, result) => {
-          if (err) {
-            return next({
-              log: 'Error at userController.verifyUser',
-              status: 503,
-              message: {err: 'Unable to compare passwords'}
-            });
-          }
-          res.locals.verified = result;
-          return next();
-        });
-        // incorrect username provided
+        const match = await bcrypt.compare(password, user.password);
+        // if passwords match, save user id to be used as cookie
+        if (match) {
+          res.locals.userId = user._id;
+        }
+        res.locals.verified = match;
+        return next();
+      // incorrect username provided
       } else {
         res.locals.verified = false;
         return next();
@@ -30,7 +27,7 @@ const userController = {
       return next({
         log: 'Error at userController.verifyUser',
         status: 503,
-        message: {err: 'Unable to retrieve data from MongoDB'}
+        message: {err: 'Unable to verify user'}
       });
     }
   },
@@ -43,32 +40,27 @@ const userController = {
       // if username is not found, create user
       if (!user) {
         // hash password
-        bcrypt.hash(password, saltRounds, (err, hash) => {
-          if (err) {
-            return next({
-              log: 'Error at userController.createUser',
-              status: 503,
-              message: {err: 'Unable to hash password'}
-            });
-          }
-          // store new user in database
-          User.create({
-            username: username,
-            password: hash,
-            categories: []
-          });
+        const hash = await bcrypt.hash(password, saltRounds);
+        // new user document
+        const newUser = new User({
+          username: username,
+          password: hash,
+          categories: []
         });
-        res.locals.created = true;
+        const doc = await newUser.save();
+        // save user id to be used as cookie
+        res.locals.userId = doc._id;
+        res.locals.userCreated = true;
       // username already exists, new user not created
       } else {
-        res.locals.created = false;
+        res.locals.userCreated = false;
       }
       return next();
     } catch(error) {
       return next({
         log: 'Error at userController.createUser',
         status: 503,
-        message: {err: 'Unable to add new user to database'}
+        message: {err: 'Unable to create user'}
       });
     }
   }

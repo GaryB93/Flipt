@@ -1,34 +1,48 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const port = 3000;
 
+
 app.use(express.json());
-app.use(express.static('dist'));
+// serve static files
+app.use(express.static('dist', { index: false}));
+//
 app.use(express.urlencoded({extended: true}));
 
+app.use(cookieParser());
+
+// controllers to read and update database
 const dataController = require('./controllers/dataController.js');
 const userController = require('./controllers/userController.js');
+const cookieController = require('./controllers/cookieController.js');
 
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-});
+// app.get("/", function (req, res) {
+//   res.sendFile(path.resolve(__dirname, '../../dist', 'index.html')), (err) => {
+//     if (err) {
+//       res.status(500).send(err);
+//     }
+//   };
+// });
 
 app.post('/login',
 userController.verifyUser,
-(req, res) => {
-  res.status(200).json(res.locals.verified);
-}
+cookieController.setSSIDCookie,
+  (req, res) => {
+    res.status(200).json(res.locals.verified);
+  }
 );
 
 app.post('/createAccount',
-userController.createUser,
-(req, res) => {
-  res.status(200).json(res.locals.created);
-}
+  userController.createUser,
+  cookieController.setSSIDCookie,
+  (req, res) => {
+    res.status(200).json(res.locals.userCreated);
+  }
 );
 
-app.get('/user_data/:username', 
+app.get('/userData',
   dataController.getData,
   (req, res) => {
     res.status(200).json(res.locals.categories);
@@ -41,6 +55,14 @@ app.patch('/update',
     res.status(200).json(res.locals.categories);
   }
 );
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.resolve(__dirname, '../../dist', 'index.html')), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  };
+});
 
 app.use((req, res) => {
   res.status(404).send('Cannot find page!');
