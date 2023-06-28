@@ -13,13 +13,13 @@ To run this project, you will need to add your own MongoDB connection link to yo
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/GaryB93/StudyBoard.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd StudyBoard
 ```
 
 Install dependencies
