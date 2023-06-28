@@ -35,6 +35,4 @@ Start the server
 ```
 
 ## Screenshots
-
-![Login Screenshot] (https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img src='public/StudyBoardLogin.png' width='400' />        <img src='public/StudyBoard.png' width='400' />
