@@ -3,8 +3,6 @@ import TopicCard from './TopicCard';
 
 const Board = ({
   currCategory,
-  setTopicInput,
-  setAnswerText,
   setCurrTopic,
   currTopic,
   }) => {
@@ -16,8 +14,6 @@ const Board = ({
         <TopicCard
           key={topicObj._id}
           topicObj={topicObj}
-          setTopicInput={setTopicInput}
-          setAnswerText={setAnswerText}
           setCurrTopic={setCurrTopic}
           currTopic={currTopic}
         />);

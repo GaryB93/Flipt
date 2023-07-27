@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import style from './Login.module.scss';
 
 const Login = () => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const [errorMsg, setErrorMsg] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -18,9 +20,7 @@ const Login = () => {
     .then(res => res.json())
     .then(data => {
       console.log(data);
-      if (data === true) {
-        navigate('/home');
-      }
+      data ? navigate('/home') : setErrorMsg(true);
     })
     .catch(err => {
       console.log('Error fetch /login: ', err);
@@ -28,9 +28,9 @@ const Login = () => {
   };
 
   return (
-    <div className='login-page page'>
-      <form className='login-form' onSubmit={handleSubmit}>
-        <h2>Study Board</h2>
+    <div className={style.loginPage}>
+      <form className={style.loginForm} onSubmit={handleSubmit}>
+        <h1>StudyCards</h1>
         <label htmlFor='username'>Username</label>
         <input name='username' id='username' type='text' autoComplete='off' required
           onChange={(e) => {setUsername(e.target.value)}}>
@@ -39,7 +39,8 @@ const Login = () => {
         <input name='password' id='password' type='password' required
           onChange={(e) => {setPassword(e.target.value)}}>
         </input>
-        <button className='login-btn' type='submit'>Login</button>
+        {errorMsg && <p>Invalid Username or Password</p>}
+        <button className={style.loginBtn} type='submit'>Login</button>
         <Link to={'/create_account'}>Create Account</Link>
       </form>
     </div>

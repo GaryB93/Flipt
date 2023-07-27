@@ -1,26 +1,63 @@
 @import './Colors.module.scss';
 
-.topic {
-  font-size: 16px;
+.front, .back {
+  font-size: 1rem;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
   width: 200px;
   height: 150px;
   box-shadow: 10px 10px 5px 0px $dark-gray;
   background-color: $light-light-gray;
-  margin: 20px;
-  padding: 5px;
+  padding: 0.5rem;
+  margin: 1rem;
   border: none;
-  // border-radius: 0.5em;
   word-wrap: break-word;
+
+  button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+  }
+
+  .close {
+    color: red;
+  }
 }
 
-.currTopic {
-  background-color: $blue;
+.front {
+  flex-direction: row;
+  
+  p {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.back {
+  flex-direction: column;
+  
+  textarea {
+    flex: 1;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .done {
-  opacity: 0.4;
+  background-color: green;
 }

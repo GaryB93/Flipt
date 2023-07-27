@@ -4,9 +4,8 @@ import Dashboard from './Dashboard';
 import Board from './Board';
 
 const Home = () => {
-  const [categories, setCategories] = useState([]);   // categories of user, 'Array'
+  const [categories, setCategories] = useState([]);   // categories of user, 'Array of Category Objects'
   const [topicInput, setTopicInput] = useState('');   // input field for topic, 'String'
-  const [answerText, setAnswerText] = useState('');   // text area for answers/notes, 'String'
   const [currCategory, setCurrCategory] = useState(); // current category highlighted, 'Object'
   const [currTopic, setCurrTopic] = useState();   // current topic highlighted, 'Object'
   const navigate = useNavigate();
@@ -53,11 +52,15 @@ const Home = () => {
     .catch((err) => {console.log({err: 'Error updating database'})});
   };
 
-  const handleSelectCategory = (category) => {
-    setCurrCategory(category);
-    setCurrTopic(null);
-    setTopicInput('');
-    setAnswerText('');
+  const handleSelectCategory = (e) => {
+    // iterate through categories to find category object selected
+    categories.forEach(category => {
+      if (e.target.value === category.category) {
+        setCurrCategory(category);
+        setCurrTopic(null);
+        setTopicInput('');
+      }
+    });
   };
 
   const handleDeleteCategory = (category) => {
@@ -153,25 +156,20 @@ const Home = () => {
   };
 
   return (
-    <div className='page'>
+    <div>
+      <h1>FlashCards</h1>
       <Dashboard
         categories={categories}
-        currCategory={currCategory}
         topicInput={topicInput}
-        setTopicInput={setTopicInput}
-        answerText={answerText}
-        setAnswerText={setAnswerText}
-        handleSelectCategory={handleSelectCategory}
-        handleDeleteCategory={handleDeleteCategory}
-        handleSave={handleSave}
-        handleStatusChange={handleStatusChange}
-        handleDeleteTopic={handleDeleteTopic}
+        currCategory={currCategory}
         updateDatabase={updateDatabase}
       />
+      <select id='categories' name='categories' onChange={handleSelectCategory}>
+        <option value=''></option>
+        {categories.map(category => <option value={category.category}>{category.category}</option>)}
+      </select>
       <Board
         currCategory={currCategory}
-        setTopicInput={setTopicInput}
-        setAnswerText={setAnswerText}
         setCurrTopic={setCurrTopic}
         currTopic={currTopic}
       />

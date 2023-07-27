@@ -4,20 +4,8 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 300px;
   padding: 20px;
   background-color: $almost-white;
-
-  h1 {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
-  h2 {
-    font-size: 1.2em;
-    padding: 10px 0;
-    border-top: 1px solid $light-gray;
-  }
 
   label {
     font-size: 0.9em;
@@ -95,45 +83,12 @@
   transform: translateY(3px);
 }
 
-#answerView {
-  flex: 1;
-  max-height: 600px;
-  padding: 5px;
-  margin-bottom: 10px;
-  resize: none;
-}
-
-#topicBtns {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-#saveTopicBtn {
-  flex: 1;
-  margin-right: 5px;
-  background-color: $blue;
-  box-shadow: 2px 2px 2px 0 black;
-}
-
-#saveTopicBtn:hover {
-  background-color: $dark-blue;
-}
-
-#changeStatusBtn {
+#addFlashCardBtn {
   flex: 1;
   background-color: $blue;
   box-shadow: 2px 2px 2px 0 black;
 }
 
-#changeStatusBtn:hover {
+#addFlashCardBtn:hover {
   background-color: $dark-blue;
-}
-
-#deleteTopicBtn {
-  background-color: $red;
-  box-shadow: 2px 2px 2px 0 black;
-}
-
-#deleteTopicBtn:hover {
-  background-color: $dark-red;
 }
