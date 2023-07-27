@@ -13,13 +13,13 @@ To run this project, you will need to add your own MongoDB connection link to yo
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/GaryB93/StudyBoard.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd StudyBoard
 ```
 
 Install dependencies
@@ -35,6 +35,4 @@ Start the server
 ```
 
 ## Screenshots
-
-![Login Screenshot] (https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img src='public/StudyBoardLogin.png' width='400' />        <img src='public/StudyBoard.png' width='400' />
