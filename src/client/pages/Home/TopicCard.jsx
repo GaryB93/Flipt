@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaArrowRight, FaArrowLeft, FaTimes, FaCheck } from 'react-icons/fa';
+import style from './TopicCard.module.scss';
 
 const TopicCard = ({
   topicObj,
@@ -11,34 +12,28 @@ const TopicCard = ({
     const string = topicObj.answer;
     const [answer, setAnswer] = useState(string);
 
-    let classes = view;
-
-    if (topicObj.done) {
-      classes += ' done';
-    }
-
     const handleTopicSelect = (e) => {
       setCurrTopic(topicObj);
     };
 
     if (view === 'front') {
       return (
-        <div className={classes} onClick={handleTopicSelect}>
+        <div className={`${style.front} ${topicObj.done && style.done}`} onClick={handleTopicSelect}>
           <p>{topicObj.topic}</p>
           <div>
-            <button ariaLabel='delete flash card' className='close'><FaTimes/></button>
-            <button ariaLabel='flip card to back' onClick={() => {setView('back')}}><FaArrowRight/></button>
+            <button aria-label='delete flash card' className={style.close}><FaTimes/></button>
+            <button aria-label='flip card to back' onClick={() => {setView('back')}}><FaArrowRight/></button>
           </div>
         </div>
       )
     } else {
       return (
-        <div className={classes} onClick={handleTopicSelect}>
-          <textarea id='answer' name='answer' value={answer}
+        <div className={`${style.back} ${topicObj.done && style.done}`} onClick={handleTopicSelect}>
+          <textarea id='answer' name='answer' value={answer} maxRows={-1}
           onChange={(e) => {setAnswer(e.target.value)}}></textarea>
           <div>
-            <button ariaLabel='flip card to front' onClick={() => {setView('front')}}><FaArrowLeft/></button>
-            <button ariaLabel='change status of answer'><FaCheck/></button>
+            <button aria-label='flip card to front' onClick={() => {setView('front')}}><FaArrowLeft/></button>
+            <button aria-label='change status of answer'><FaCheck/></button>
           </div>
         </div>
       )

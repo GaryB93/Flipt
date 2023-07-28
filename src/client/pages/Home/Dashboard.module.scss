@@ -1,0 +1,33 @@
+@import '../../assets/styles/Colors.module.scss';
+
+.dashboard {
+  box-sizing: border-box;
+  padding: 1rem 0.5rem;
+  color: $white;
+  background-color: $dashboard-bg;
+  z-index: 2;
+  border-bottom: 1px solid $gray;
+  box-shadow: 0 3px 10px 0 $med-gray;
+
+  form {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      margin: 0.3rem 0;
+      padding: 0.2rem;
+    }
+
+    button {
+      padding: 0.2rem;
+      background-color: $primary-btn;
+      color: white;
+      border: 1px solid $med-gray;
+    }
+  }
+}
+
+.dashboard button:active {
+  transform: translateY(3px);
+}

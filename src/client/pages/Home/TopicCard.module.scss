@@ -1,15 +1,15 @@
-@import './Colors.module.scss';
+@import '../../assets/styles/Colors.module.scss';
 
 .front, .back {
   font-size: 1rem;
   display: flex;
-  width: 200px;
-  height: 150px;
-  box-shadow: 10px 10px 5px 0px $dark-gray;
-  background-color: $light-light-gray;
+  min-height: 150px;
+  box-shadow: 0 0 5px 0 $dark-gray;
+  background-color: $white;
   padding: 0.5rem;
-  margin: 1rem;
-  border: none;
+  margin: 1rem 0 2rem 0;
+  border: 1px solid $light-gray;
+  border-radius: 10px;
   word-wrap: break-word;
 
   button {
@@ -49,6 +49,7 @@
     flex: 1;
     margin-bottom: 0.5rem;
     padding: 0.3rem;
+    border: 1px solid $light-gray;
   }
 
   div {
@@ -59,5 +60,5 @@
 }
 
 .done {
-  background-color: green;
+  opacity: 0.5;
 }

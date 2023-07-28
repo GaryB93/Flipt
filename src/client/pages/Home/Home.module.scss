@@ -1,0 +1,16 @@
+@import '../../assets/styles/Colors.module.scss';
+
+.homePage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+    background-color: $header-bg;
+    color: $white;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid $gray;
+    z-index: 3;
+  }
+}

@@ -2,12 +2,6 @@
 
 @import './assets/styles/Colors.module.scss';
 
-
-@import './assets/styles/Dashboard.module.scss';
-@import './assets/styles/TopicCard.module.scss';
-@import './assets/styles/Board.module.scss';
-
-
 * {
   margin: 0;
   padding: 0;
@@ -22,20 +16,11 @@ button {
   height: 100vh;
 }
 
-.page {
-  display: flex;
-  height: 100%;
-}
-
-
-
-
 
 
 // Scrollbar Styles
-
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 14px;
 }
 
 ::-webkit-scrollbar-track {
@@ -43,9 +28,12 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $blue;
+  background: $gray;
+  border: 2px solid $light-light-gray;
+  -webkit-border-radius: 10px;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: $dark-blue;
+  background: $light-gray;
 }

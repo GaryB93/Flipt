@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import style from './Dashboard.module.scss';
 
 const Dashboard = ({ categories, currCategory, updateDatabase }) => {
     // input fields for new category and new flash card
     const [categoryInput, setCategoryInput] = useState('');
     const [flashCardInput, setFlashCardInput] = useState('');
 
-    const handleAddCategory = () => {
+    const handleAddCategory = (e) => {
+      e.preventDefault();
       if(categoryInput) {
         // deep copy array of categories
         const categoriesCopy = JSON.parse(JSON.stringify(categories));
@@ -46,18 +48,20 @@ const Dashboard = ({ categories, currCategory, updateDatabase }) => {
     };
 
     return (
-      <div className='dashboard'>
-        <label htmlFor='newCategory'>New Category</label>
-        <input type='text' id='newCategory' name='newCategory' autoComplete='off'
-          value={categoryInput} maxLength={30} onChange={(e) => {setCategoryInput(e.target.value)}} />
-        <button type='button' id='addCategoryBtn' ariaLabel='add new category'
-          onClick={handleAddCategory}>Add</button>
+      <div className={style.dashboard}>
+        <form onSubmit={handleAddCategory}>
+          <label htmlFor='newCategory'>New Category</label>
+          <input type='text' id='newCategory' name='newCategory' autoComplete='off'
+            value={categoryInput} maxLength={30} onChange={(e) => {setCategoryInput(e.target.value)}} />
+          <button type='submit' id='addCategoryBtn' aria-label='add new category'>Add</button>
+        </form>
 
-        <label htmlFor='newFlashCard'>New Flash Card</label>
-        <input type='text' id='newFlashCard' name='newFlashCard' value={flashCardInput} maxLength={150}
-          autoComplete='off' onChange={(e) => {setFlashCardInput(e.target.value)}} />
-        <button type='button' id='addFlashCardBtn' ariaLabel='add new flash card'
-          onClick={handleAddFlashCard}>Add</button>
+        <form onSubmit={handleAddFlashCard}>
+          <label htmlFor='newFlashCard'>New Flash Card</label>
+          <input type='text' id='newFlashCard' name='newFlashCard' value={flashCardInput} maxLength={150}
+              autoComplete='off' onChange={(e) => {setFlashCardInput(e.target.value)}} />
+          <button type='submit' id='addFlashCardBtn' aria-label='add new flash card'>Add</button>
+        </form>
       </div>
     );
 };

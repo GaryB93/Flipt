@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import Board from './Board';
+import style from './Home.module.scss';
 
 const Home = () => {
   const [categories, setCategories] = useState([]);   // categories of user, 'Array of Category Objects'
-  const [topicInput, setTopicInput] = useState('');   // input field for topic, 'String'
   const [currCategory, setCurrCategory] = useState(); // current category highlighted, 'Object'
   const [currTopic, setCurrTopic] = useState();   // current topic highlighted, 'Object'
   const navigate = useNavigate();
@@ -52,13 +52,12 @@ const Home = () => {
     .catch((err) => {console.log({err: 'Error updating database'})});
   };
 
-  const handleSelectCategory = (e) => {
+  const handleSelectCategory = (selectedCategory) => {
     // iterate through categories to find category object selected
     categories.forEach(category => {
-      if (e.target.value === category.category) {
+      if (selectedCategory.value === category.category) {
         setCurrCategory(category);
         setCurrTopic(null);
-        setTopicInput('');
       }
     });
   };
@@ -156,22 +155,19 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className={style.homePage}>
       <h1>FlashCards</h1>
       <Dashboard
         categories={categories}
-        topicInput={topicInput}
         currCategory={currCategory}
         updateDatabase={updateDatabase}
       />
-      <select id='categories' name='categories' onChange={handleSelectCategory}>
-        <option value=''></option>
-        {categories.map(category => <option value={category.category}>{category.category}</option>)}
-      </select>
       <Board
         currCategory={currCategory}
         setCurrTopic={setCurrTopic}
         currTopic={currTopic}
+        categories={categories}
+        handleSelectCategory={handleSelectCategory}
       />
     </div>
   );
