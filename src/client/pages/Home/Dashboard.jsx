@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import style from './Dashboard.module.scss';
 
-const Dashboard = ({ categories, currCategory, updateDatabase }) => {
+const Dashboard = ({
+  categories,
+  updateDatabase,
+  selectOption,
+  setSelectOption
+  }) => {
     // input fields for new category and new flash card
     const [categoryInput, setCategoryInput] = useState('');
     const [flashCardInput, setFlashCardInput] = useState('');
 
+    // add new category
     const handleAddCategory = (e) => {
       e.preventDefault();
-      if(categoryInput) {
+      if (categoryInput) {
         // deep copy array of categories
         const categoriesCopy = JSON.parse(JSON.stringify(categories));
         // create new category object to be added
@@ -19,16 +25,17 @@ const Dashboard = ({ categories, currCategory, updateDatabase }) => {
         // add new category to array of categories
         categoriesCopy.push(newCategory);
         setCategoryInput('');
+        setSelectOption({ value: categoryInput, label: categoryInput });
         updateDatabase(categoriesCopy);
       }
     };
 
-    const handleAddFlashCard = () => {
+    // add new flash card to current category
+    const handleAddFlashCard = (e) => {
+      e.preventDefault();
       if (flashCardInput) {
         // deep copy array of categories
         const categoriesCopy = JSON.parse(JSON.stringify(categories));
-        // current category name selected
-        const categoryName = currCategory.category;
         // create new flash card object
         const newFlashCard = {
           topic: flashCardInput,
@@ -37,8 +44,7 @@ const Dashboard = ({ categories, currCategory, updateDatabase }) => {
         }
         // iterate through categories until selected one is found and add new flash card object
         categoriesCopy.forEach(category => {
-          if (category.category === categoryName) {
-            console.log('made it here');
+          if (category.category === selectOption.value) {
             category.topics.push(newFlashCard);
           }
         });
@@ -60,7 +66,7 @@ const Dashboard = ({ categories, currCategory, updateDatabase }) => {
           <label htmlFor='newFlashCard'>New Flash Card</label>
           <input type='text' id='newFlashCard' name='newFlashCard' value={flashCardInput} maxLength={150}
               autoComplete='off' onChange={(e) => {setFlashCardInput(e.target.value)}} />
-          <button type='submit' id='addFlashCardBtn' aria-label='add new flash card'>Add</button>
+          <button type='submit' id='addFlashCardBtn' aria-label='add new flash card' disabled={selectOption ? false: true}>Add</button>
         </form>
       </div>
     );

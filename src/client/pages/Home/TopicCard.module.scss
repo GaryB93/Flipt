@@ -16,11 +16,16 @@
     width: 25px;
     height: 25px;
     border: none;
-    border-radius: 50%;
+    background-color: $white;
+    color: $med-gray;
+  }
+
+  .check {
+    color: $light-gray;
   }
 
   .close {
-    color: red;
+    color: $red;
   }
 }
 
@@ -60,5 +65,8 @@
 }
 
 .done {
-  opacity: 0.5;
+
+  .check {
+    color: $light-emerald;
+  }
 }

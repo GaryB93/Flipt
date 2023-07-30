@@ -4,41 +4,70 @@ import Select from 'react-select';
 import style from './Board.module.scss';
 
 const Board = ({
-  currCategory,
   setCurrTopic,
   currTopic,
   categories,
-  handleSelectCategory
+  handleDeleteCard,
+  handleStatusChange,
+  handleSave,
+  handleDeleteCategory,
+  selectOption,
+  setSelectOption
   }) => {
-    const topicsArray = [];
 
-    if (currCategory) {
-      for (const topicObj of currCategory.topics) {
-        topicsArray.push(
-          <TopicCard
-            key={topicObj._id}
-            topicObj={topicObj}
-            setCurrTopic={setCurrTopic}
-            currTopic={currTopic}
-          />);
+    const flashCards = [];
+
+    // populate flash cards for selected category
+    if (selectOption) {
+      // iterate through categories to find selection
+      for (const category of categories) {
+        // category selection is found
+        if (category.category === selectOption.value) {
+          // iterate through topics to populate flash cards
+          for (const topic of category.topics) {
+            flashCards.push(
+              <TopicCard
+                key={topic._id}
+                topic={topic}
+                setCurrTopic={setCurrTopic}
+                currTopic={currTopic}
+                handleDeleteCard={handleDeleteCard}
+                handleStatusChange={handleStatusChange}
+                handleSave={handleSave}
+              />
+            );
+          }
+        }
       }
     }
 
+    // populate options for Select element
     const options = categories.map(category => {
       return {
         value: category.category,
         label: category.category
       }
-    });
+    })
 
     return (
       <div className={style.board}>
-        <Select id={style.categories} onChange={handleSelectCategory}
-          options={options} aria-label='Select a category'/>
+        <Select
+          onChange={option => {
+            setSelectOption(option);
+          }}
+          value={selectOption}
+          options={options}
+          aria-label='Select a category'
+          placeholder='Select Category...'
+        />
         <div className={style.cards}>
-          {topicsArray}
+          {flashCards}
         </div>
-        <button className={style.delete}>Delete Category</button>
+        {selectOption && 
+          <button className={style.delete} onClick={handleDeleteCategory}>
+            Delete Category
+          </button>
+        }
       </div>
     );
 };

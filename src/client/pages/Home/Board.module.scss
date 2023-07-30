@@ -14,7 +14,8 @@
   .delete {
     width: 100%;
     padding: 0.3rem;
-    color: $red;
+    background-color: $red;
+    color: $white;
     border-radius: 10px;
     border: 2px solid $red;
     box-shadow: 0 0 5px 0 $dark-gray;
