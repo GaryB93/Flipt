@@ -1,27 +1,25 @@
 // Gray-Scale
 $black: rgb(0, 0, 0);
-$dark-gray: rgb(30, 30, 30);
-$med-gray: rgb(60, 60, 60);
-$gray: rgb(120, 120, 120);
-$light-gray: rgb(180, 180, 180);
-$light-light-gray: rgb(220, 220, 220);
-$almost-white: rgb(240, 240, 240);
-$white: rgb(255, 255, 255);
+$gray1: rgb(30, 30, 30);
+$gray2: rgb(60, 60, 60);
+$gray3: rgb(120, 120, 120);
+$gray4: rgb(180, 180, 180);
+$gray5: rgb(220, 220, 220);
+$gray6: rgb(240, 240, 240);
+// $white: rgb(255, 255, 255);
+$shadows: $gray2;
 
-//Colors
-$forest-green: #2A9134;
-$pigment-green: #3FA34D;
-$emerald: #5BBA6F;
-$light-emerald: #71D67B;
-
+// Color palette
+$primary-color: #4682A9;
+$secondary-color: #749BC2;
+$tertiary-color: #91C8E4;
+$white: #F6F4EB;
 
 $red: rgb(175, 0, 0);
 $dark-red: rgb(141, 0, 0);
 
-$flash-card-done: $forest-green;
-$header-bg: $dark-gray;
-$dashboard-bg: $med-gray;
-$board-bg: $light-gray;
-
-$primary-btn: $forest-green;
-$secondary-btn: $light-gray;
+// Large component backgrounds
+$flash-card-done: green;
+$header-bg: $white;
+$dashboard-bg: $white;
+$board-bg: $tertiary-color;

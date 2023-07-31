@@ -5,19 +5,62 @@
   height: 100%;
   background-color: $board-bg;
   overflow-y: auto;
-  scroll-padding: 20px;
+  text-align: center;
+
+  .selector {
+    box-shadow: 0 0 5px 0 $shadows;
+    max-width: 555px;
+    margin: 0 auto;
+  }
 
   .cards {
-    margin-top: 2rem;
+    margin: 2rem 0;
   }
 
   .delete {
-    width: 100%;
+    width: 200px;
+    margin: 0 auto;
     padding: 0.3rem;
     background-color: $red;
     color: $white;
-    border-radius: 10px;
-    border: 2px solid $red;
-    box-shadow: 0 0 5px 0 $dark-gray;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px 0 $shadows;
+  }
+
+  .delete:hover {
+    background-image: linear-gradient($dark-red, $red);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 50px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .cards {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .cards {
+    grid-template-columns: repeat(6, 1fr);
   }
 }

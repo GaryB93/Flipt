@@ -52,13 +52,29 @@ const Board = ({
     return (
       <div className={style.board}>
         <Select
-          onChange={option => {
-            setSelectOption(option);
-          }}
+          className={style.selector}
           value={selectOption}
           options={options}
           aria-label='Select a category'
           placeholder='Select Category...'
+          onChange={option => {
+            setSelectOption(option);
+          }}
+          styles={{
+            control: (styles, state) => ({
+              ...styles,
+              backgroundColor: 'white',
+            }),
+            option: (styles, state) => ({
+              ...styles,
+              backgroundColor: state.isFocused ? '#749BC2'
+                : state.isSelected ? '#4682A9'
+                : 'white',
+              color: state.isFocused ? 'white'
+                : state.isSelected ? 'white'
+                : 'black',
+            })
+          }}
         />
         <div className={style.cards}>
           {flashCards}

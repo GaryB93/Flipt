@@ -4,11 +4,12 @@
   font-size: 1rem;
   display: flex;
   min-height: 150px;
-  box-shadow: 0 0 5px 0 $dark-gray;
+  max-width: 250px;
+  box-shadow: 0 0 5px 0 $shadows;
   background-color: $white;
   padding: 0.5rem;
-  margin: 1rem 0 2rem 0;
-  border: 1px solid $light-gray;
+  margin: 1rem auto 2rem auto;
+  border: 1px solid $gray5;
   border-radius: 10px;
   word-wrap: break-word;
 
@@ -17,11 +18,16 @@
     height: 25px;
     border: none;
     background-color: $white;
-    color: $med-gray;
+    color: $gray1;
+  }
+
+  button:hover {
+    border: 1px solid $gray4;
+    border-radius: 50%;
   }
 
   .check {
-    color: $light-gray;
+    color: $gray5;
   }
 
   .close {
@@ -54,7 +60,7 @@
     flex: 1;
     margin-bottom: 0.5rem;
     padding: 0.3rem;
-    border: 1px solid $light-gray;
+    border: 1px solid $gray1;
   }
 
   div {
@@ -67,6 +73,14 @@
 .done {
 
   .check {
-    color: $light-emerald;
+    color: green;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .front, .back {
+    min-width: 250px;
+    margin: 0;
+    justify-self: center;
   }
 }

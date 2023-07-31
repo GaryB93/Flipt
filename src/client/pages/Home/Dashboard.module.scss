@@ -1,29 +1,45 @@
 @import '../../assets/styles/Colors.module.scss';
 
 .dashboard {
-  box-sizing: border-box;
   padding: 1rem 0.5rem;
-  color: $white;
+  color: $gray2;
   background-color: $dashboard-bg;
   z-index: 2;
-  border-bottom: 1px solid $gray;
-  box-shadow: 0 3px 10px 0 $med-gray;
+  border-bottom: 1px solid $gray4;
 
   form {
     padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+
+    div {
+      display: flex;
+      flex-direction: row;
+    }
 
     input {
-      margin: 0.3rem 0;
-      padding: 0.2rem;
+      flex: 1;
+      margin-right: 0.3rem;
+      padding: 0.3rem;
+      border: 2px solid $gray4;
+      border-radius: 5px;
+    }
+
+    input:hover {
+      border: 2px solid $primary-color;
     }
 
     button {
-      padding: 0.2rem;
-      background-color: $primary-btn;
-      color: white;
-      border: 1px solid $med-gray;
+      padding: 0.3rem;
+      width: 100px;
+      background-color: $primary-color;
+      color: $white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-image: linear-gradient($secondary-color, $primary-color);
     }
   }
 }

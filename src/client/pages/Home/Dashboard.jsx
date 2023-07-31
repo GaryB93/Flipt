@@ -56,17 +56,46 @@ const Dashboard = ({
     return (
       <div className={style.dashboard}>
         <form onSubmit={handleAddCategory}>
-          <label htmlFor='newCategory'>New Category</label>
-          <input type='text' id='newCategory' name='newCategory' autoComplete='off'
-            value={categoryInput} maxLength={30} onChange={(e) => {setCategoryInput(e.target.value)}} />
-          <button type='submit' id='addCategoryBtn' aria-label='add new category'>Add</button>
+          <div>
+            <input
+              type='text'
+              id='newCategory'
+              name='newCategory'
+              autoComplete='off'
+              placeholder='New category...'
+              aria-label='New category'
+              value={categoryInput}
+              maxLength={30}
+              onChange={(e) => {setCategoryInput(e.target.value)}}
+            />
+            <button
+              type='submit'
+              id='addCategoryBtn'
+              aria-label='add new category'
+            >Add</button>
+          </div>
         </form>
 
         <form onSubmit={handleAddFlashCard}>
-          <label htmlFor='newFlashCard'>New Flash Card</label>
-          <input type='text' id='newFlashCard' name='newFlashCard' value={flashCardInput} maxLength={150}
-              autoComplete='off' onChange={(e) => {setFlashCardInput(e.target.value)}} />
-          <button type='submit' id='addFlashCardBtn' aria-label='add new flash card' disabled={selectOption ? false: true}>Add</button>
+          <div>
+            <input
+              type='text'
+              id='newFlashCard'
+              name='newFlashCard'
+              autoComplete='off'
+              placeholder='New flash card...'
+              aria-label='New flash card'
+              value={flashCardInput}
+              maxLength={150}
+              onChange={(e) => {setFlashCardInput(e.target.value)}}
+            />
+            <button
+              type='submit'
+              id='addFlashCardBtn'
+              aria-label='add new flash card'
+              disabled={selectOption ? false: true}
+            >Add</button>
+          </div>
         </form>
       </div>
     );

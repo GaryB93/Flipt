@@ -15,17 +15,30 @@ const TopicCard = ({ topic, setCurrTopic, currTopic, handleDeleteCard, handleSta
     return (
       <div className={`${style.front} ${topic.done && style.done}`}>
         <div>
-          <button aria-label='change status' className={style.check} onClick={() => {handleStatusChange(topic)}}>
+          <button
+            aria-label='Mark card done or undone'
+            className={style.check}
+            onClick={() => {handleStatusChange(topic)}}
+            title='Mark done'
+          >
             <FaCheck size={18}/>
           </button>
         </div>
         <p>{topic.topic}</p>
         <div>
-          <button aria-label='delete flash card' className={style.close}
-          onClick={() => {handleDeleteCard(topic)}}>
+          <button
+            aria-label='Delete flash card'
+            className={style.close}
+            onClick={() => {handleDeleteCard(topic)}}
+            title='Delete'
+          >
             <FaTimes size={18}/>
           </button>
-          <button aria-label='flip card to back' onClick={handleCardSelect}>
+          <button
+            aria-label='flip card to back'
+            onClick={handleCardSelect}
+            title='Flip'
+          >
             <FaArrowRight size={18}/>
           </button>
         </div>
@@ -34,8 +47,11 @@ const TopicCard = ({ topic, setCurrTopic, currTopic, handleDeleteCard, handleSta
   } else {
     return (
       <div className={`${style.back} ${topic.done && style.done}`}>
-        <textarea id='answer' name='answer' value={answer}
-          onChange={(e) => {setAnswer(e.target.value)}}></textarea>
+        <textarea
+          id='answer'
+          name='answer'
+          value={answer}
+          onChange={(e) => {setAnswer(e.target.value)}} />
         <div>
           <button aria-label='flip card to front' onClick={() => {handleSave(answer)}}>
             <FaArrowLeft size={18}/>

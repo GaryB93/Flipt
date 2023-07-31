@@ -5,6 +5,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -24,16 +25,16 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  background: $light-light-gray;
+  background: $gray5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $gray;
-  border: 2px solid $light-light-gray;
+  background: $gray2;
+  border: 2px solid $gray5;
   -webkit-border-radius: 10px;
   background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: $light-gray;
+  background: $gray4;
 }
