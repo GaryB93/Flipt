@@ -63,16 +63,16 @@ const Board = ({
           styles={{
             control: (styles, state) => ({
               ...styles,
-              backgroundColor: 'white',
+              backgroundColor: 'rgb(240, 240, 240)',
             }),
             option: (styles, state) => ({
               ...styles,
-              backgroundColor: state.isFocused ? '#749BC2'
-                : state.isSelected ? '#4682A9'
-                : 'white',
-              color: state.isFocused ? 'white'
-                : state.isSelected ? 'white'
-                : 'black',
+              backgroundColor: state.isFocused ? 'rgb(120, 120, 120)'
+                : state.isSelected ? 'rgb(30, 30, 30)'
+                : 'rgb(240, 240, 240)',
+              color: state.isFocused ? 'rgb(240, 240, 240)'
+                : state.isSelected ? 'rgb(240, 240, 240)'
+                : 'rgb(0, 0, 0)',
             })
           }}
         />

@@ -6,31 +6,30 @@
   min-height: 150px;
   max-width: 250px;
   box-shadow: 0 0 5px 0 $shadows;
-  background-color: $white;
+  background-color: $gray6;
   padding: 0.5rem;
   margin: 1rem auto 2rem auto;
-  border: 1px solid $gray5;
-  border-radius: 10px;
+  border: 1px solid $gray3;
+  border-radius: 5px;
   word-wrap: break-word;
 
   button {
     width: 25px;
     height: 25px;
     border: none;
-    background-color: $white;
-    color: $gray1;
-  }
-
-  button:hover {
-    border: 1px solid $gray4;
-    border-radius: 50%;
-  }
-
-  .check {
+    background-color: $gray6;
     color: $gray5;
   }
 
-  .close {
+  button:hover {
+    color: $gray3;
+  }
+
+  .check:hover {
+    color: $flash-card-done;
+  }
+
+  .close:hover {
     color: $red;
   }
 }
@@ -55,12 +54,13 @@
 
 .back {
   flex-direction: column;
-  
+  background-color: $gray2;
+
   textarea {
     flex: 1;
     margin-bottom: 0.5rem;
     padding: 0.3rem;
-    border: 1px solid $gray1;
+    border: 1px solid $gray4;
   }
 
   div {
@@ -68,12 +68,21 @@
     flex-direction: row;
     justify-content: space-between;
   }
+
+  button {
+    background-color: $gray2;
+    color: $gray3;
+  }
+
+  button:hover {
+    color: $gray5;
+  }
 }
 
 .done {
 
   .check {
-    color: green;
+    color: $flash-card-done;
   }
 }
 

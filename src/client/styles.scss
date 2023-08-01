@@ -21,20 +21,20 @@ button {
 
 // Scrollbar Styles
 ::-webkit-scrollbar {
-  width: 14px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: $gray5;
+  background: $gray2;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $gray2;
-  border: 2px solid $gray5;
+  background: $gray4;
+  border: 2px solid $gray2;
   -webkit-border-radius: 10px;
   background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: $gray4;
+  background: $gray3;
 }

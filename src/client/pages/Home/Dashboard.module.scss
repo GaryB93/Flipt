@@ -32,14 +32,14 @@
     button {
       padding: 0.3rem;
       width: 100px;
-      background-color: $primary-color;
+      background-color: $gray1;
       color: $white;
-      border: none;
+      border: 2px solid $primary-color;
       border-radius: 5px;
     }
 
     button:hover {
-      background-image: linear-gradient($secondary-color, $primary-color);
+      background-color: $secondary-color;
     }
   }
 }

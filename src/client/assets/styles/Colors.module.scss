@@ -6,20 +6,20 @@ $gray3: rgb(120, 120, 120);
 $gray4: rgb(180, 180, 180);
 $gray5: rgb(220, 220, 220);
 $gray6: rgb(240, 240, 240);
-// $white: rgb(255, 255, 255);
-$shadows: $gray2;
+$white: rgb(255, 255, 255);
 
-// Color palette
-$primary-color: #4682A9;
-$secondary-color: #749BC2;
-$tertiary-color: #91C8E4;
-$white: #F6F4EB;
+// Dark Theme
+$primary-color: #FF6000;
+$secondary-color: #B8621B;
 
+// Tartan Theme
+
+// Other colors
 $red: rgb(175, 0, 0);
 $dark-red: rgb(141, 0, 0);
+$flash-card-done: green;
 
 // Large component backgrounds
-$flash-card-done: green;
-$header-bg: $white;
-$dashboard-bg: $white;
-$board-bg: $tertiary-color;
+$header-bg: $gray1;
+$dashboard-bg: $gray2;
+$shadows: $black;
