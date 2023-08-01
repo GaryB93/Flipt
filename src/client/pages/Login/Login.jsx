@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import style from './Login.module.scss';
+import logo from '../../assets/images/Flipd_logo.png';
 
 const Login = () => {
   const [username, setUsername] = useState();
@@ -30,7 +31,10 @@ const Login = () => {
   return (
     <div className={style.loginPage}>
       <form className={style.loginForm} onSubmit={handleSubmit}>
-        <h1>StudyCards</h1>
+        <div>
+          <img src={logo} alt='Flipped logo'/>
+        </div>
+        <h1>Welcome</h1>
         <label htmlFor='username'>Username</label>
         <input name='username' id='username' type='text' autoComplete='off' required
           onChange={(e) => {setUsername(e.target.value)}}>
@@ -39,8 +43,9 @@ const Login = () => {
         <input name='password' id='password' type='password' required
           onChange={(e) => {setPassword(e.target.value)}}>
         </input>
-        {errorMsg && <p>Invalid Username or Password</p>}
+        {errorMsg && <p>*Invalid Username or Password</p>}
         <button className={style.loginBtn} type='submit'>Login</button>
+        <p>or</p>
         <Link to={'/create_account'}>Create Account</Link>
       </form>
     </div>

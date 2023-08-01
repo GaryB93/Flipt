@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import Board from './Board';
 import style from './Home.module.scss';
+import logo from '../../assets/images/Flipd_logo.png';
 
 const Home = () => {
   const [categories, setCategories] = useState([]); // categories of user, 'Array of Category Objects'
@@ -127,7 +128,10 @@ const Home = () => {
 
   return (
     <div className={style.homePage}>
-      <h1>FlashCards</h1>
+      <header>
+        <img src={logo} alt='Flipped logo'/>
+        <button>Logout</button>
+      </header>
       <Dashboard
         categories={categories}
         updateDatabase={updateDatabase}

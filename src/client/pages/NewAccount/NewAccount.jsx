@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import style from '../Login/Login.module.scss';
+import logo from '../../assets/images/Flipd_logo.png';
 
 const NewAccount = () => {
   const [username, setUsername] = useState();
@@ -23,12 +24,18 @@ const NewAccount = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        data ? navigate('/home') : setErrMsg1(true);
+        if (data) {
+          navigate('/home')
+        } else {
+          setErrMsg1(true);
+          setErrMsg2(false);
+        }
       })
       .catch(err => {
         console.log('Error fetch /login: ', err);
       });
     } else {
+      setErrMsg1(false);
       setErrMsg2(true);
     }
   }
@@ -36,7 +43,10 @@ const NewAccount = () => {
   return (
     <div className={style.loginPage}>
       <form className={style.loginForm} onSubmit={handleSubmit}>
-        <h1>StudyCards</h1>
+        <div>
+          <img src={logo} alt='Flipped logo'/>
+        </div>
+        <h1>New Account</h1>
         <label htmlFor='newUsername'>Username</label>
         <input name='newUsername' id='newUsername' type='text' autoComplete='off' required
           onChange={(e) => {setUsername(e.target.value)}}/>
@@ -46,9 +56,10 @@ const NewAccount = () => {
         <label htmlFor='retype-password'>Retype Password</label>
         <input name='retype-password' id='retype-password' type='password' required
           onChange={(e) => {setPassword2(e.target.value)}}/>
-        {errMsg1 && <p>Username already exists</p>}
-        {errMsg2 && <p>Passwords do not match</p>}
+        {errMsg1 && <p>*Username already exists</p>}
+        {errMsg2 && <p>*Passwords do not match</p>}
         <button className={style.loginBtn} type='submit'>Create Account</button>
+        <p>or</p>
         <Link to={'/'}>Back to login</Link>
       </form>
     </div>

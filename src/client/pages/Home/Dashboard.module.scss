@@ -32,18 +32,14 @@
     button {
       padding: 0.3rem;
       width: 100px;
-      background-color: $gray1;
-      color: $white;
+      background-color: $primary-color;
+      color: $gray1;
       border: 2px solid $primary-color;
       border-radius: 5px;
     }
 
     button:hover {
-      background-color: $secondary-color;
+      opacity: 0.8;
     }
   }
-}
-
-.dashboard button:active {
-  transform: translateY(3px);
 }

@@ -10,13 +10,14 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin({
-            template: './src/client/index.html'
+            template: './src/client/index.html',
+            favicon: './src/client/assets/images/Flipd_icon.png'
         })
     ],
     devServer: {
         static: {
-            publicPath: '/dist',
-            directory: path.resolve(__dirname, 'dist')
+            
+            directory: path.join(__dirname, 'public')
         },
         proxy: {
             '/': 'http://localhost:3000',
@@ -38,6 +39,14 @@ module.exports = {
               test: /\.s[ac]ss$/i,
               use: ['style-loader', 'css-loader', 'sass-loader']
             },
+            {
+                test: /\.(png|svg|jpe?g|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader'
+                    }
+                ]
+            }
         ]
     },
     resolve: {

@@ -8,6 +8,7 @@ const port = 3000;
 app.use(express.json());
 // serve static files
 app.use(express.static('dist', { index: false}));
+
 //
 app.use(express.urlencoded({extended: true}));
 
