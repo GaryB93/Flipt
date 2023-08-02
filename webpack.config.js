@@ -11,7 +11,7 @@ module.exports = {
     plugins: [
         new HTMLWebpackPlugin({
             template: './src/client/index.html',
-            favicon: './src/client/assets/images/Flipd_icon.png'
+            favicon: './src/client/assets/images/Flipt_icon.png'
         })
     ],
     devServer: {
@@ -51,5 +51,9 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx']
+    },
+    performance: {
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
     }
 }

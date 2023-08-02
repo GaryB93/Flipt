@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import Board from './Board';
 import style from './Home.module.scss';
-import logo from '../../assets/images/Flipd_logo.png';
+import logo from '../../assets/images/Flipt_logo.png';
 
 const Home = () => {
   const [categories, setCategories] = useState([]); // categories of user, 'Array of Category Objects'

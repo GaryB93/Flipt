@@ -5,7 +5,7 @@ import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import ErrorPage from './pages/Error';
 import NewAccount from './pages/NewAccount/NewAccount';
-import './styles.scss';
+import './assets/styles/styles.scss';
 
 const router = createBrowserRouter([
   {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import style from './Login.module.scss';
-import logo from '../../assets/images/Flipd_logo.png';
+import logo from '../../assets/images/Flipt_logo.png';
 
 const Login = () => {
   const [username, setUsername] = useState();
