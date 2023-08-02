@@ -126,11 +126,19 @@ const Home = () => {
     updateDatabase(categoriesCopy);
   };
 
+  const handleLogout = () => {
+    fetch('/removeCookie')
+    .then(navigate('/'))
+    .catch((err) => {
+      console.log({err: 'Error removing cookie'});
+    });
+  }
+
   return (
     <div className={style.homePage}>
       <header>
         <img src={logo} alt='Flipped logo'/>
-        <button>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </header>
       <Dashboard
         categories={categories}

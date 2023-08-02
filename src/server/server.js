@@ -28,10 +28,24 @@ const cookieController = require('./controllers/cookieController.js');
 // });
 
 app.post('/login',
-userController.verifyUser,
-cookieController.setSSIDCookie,
+  userController.verifyUser,
+  cookieController.setSSIDCookie,
   (req, res) => {
     res.status(200).json(res.locals.verified);
+  }
+);
+
+app.get('/verifyCookie',
+  cookieController.verifyCookie,
+  (req, res) => {
+    res.status(200).json(res.locals.verified);
+  }
+);
+
+app.get('/removeCookie',
+  cookieController.removeCookie,
+  (req, res) => {
+    res.status(200).send();
   }
 );
 

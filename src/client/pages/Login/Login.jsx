@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import style from './Login.module.scss';
 import logo from '../../assets/images/Flipd_logo.png';
@@ -8,6 +8,20 @@ const Login = () => {
   const [password, setPassword] = useState();
   const [errorMsg, setErrorMsg] = useState(false);
   const navigate = useNavigate();
+
+  // check for cookie to automatically login user
+  useEffect(() => {
+    fetch('/verifyCookie')
+    .then(res => res.json())
+    .then(verified => {
+      if (verified) {
+        navigate('/home');
+      }
+    })
+    .catch(err => {
+      console.log('Error verifying cookie: ', err);
+    });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +34,6 @@ const Login = () => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       data ? navigate('/home') : setErrorMsg(true);
     })
     .catch(err => {

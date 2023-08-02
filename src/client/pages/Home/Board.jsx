@@ -43,11 +43,11 @@ const Board = ({
 
     // populate options for Select element
     const options = categories.map(category => {
-      return {
-        value: category.category,
-        label: category.category
-      }
-    })
+        return {
+          value: category.category,
+          label: category.category
+        }
+    });
 
     return (
       <div className={style.board}>
