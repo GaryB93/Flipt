@@ -7,7 +7,7 @@ const port = 3000;
 
 app.use(express.json());
 // serve static files
-app.use(express.static('dist', { index: false}));
+app.use(express.static('build', { index: false}));
 
 //
 app.use(express.urlencoded({extended: true}));
@@ -72,7 +72,7 @@ app.patch('/update',
 );
 
 app.get("/*", function (req, res) {
-  res.sendFile(path.resolve(__dirname, '../../dist', 'index.html')), (err) => {
+  res.sendFile(path.resolve(__dirname, '../../build', 'index.html')), (err) => {
     if (err) {
       res.status(500).send(err);
     }
