@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const port = 3000;
+let port = process.env.PORT;
 
+if (port == null || port == '') {
+  port = 3000;
+}
 
 app.use(express.json());
 // serve static files
