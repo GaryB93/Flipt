@@ -5,7 +5,7 @@ module.exports = {
     mode: process.env.NODE_ENV,
     entry: './src/client/index.js',
     output: {
-        path: path.join(__dirname, '/dist'),
+        path: path.join(__dirname, '/build'),
         filename: 'bundle.js'
     },
     plugins: [
