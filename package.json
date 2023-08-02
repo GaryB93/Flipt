@@ -1,7 +1,7 @@
 {
-  "name": "studyboard",
+  "name": "flipt",
   "version": "1.0.0",
-  "description": "",
+  "description": "Flash card app for studying",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/server/server.js",
@@ -9,7 +9,7 @@
     "dev": "NODE_ENV=development nodemon src/server/server.js & NODE_ENV=development webpack serve"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gary Balogh",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
