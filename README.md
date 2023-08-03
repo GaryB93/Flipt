@@ -1,6 +1,6 @@
 # Flipt
 
-It's here! Flipt has arrived! An application that uses flash cards to help you learn or study. You create the categories. You create the topics. And you create the answers or notes. It's an organized way for you to categorize any topics you want to study in a visual way.
+It's here! Flipt has arrived! An application that uses flash cards to help you learn or study. You create the categories. You create the topics. And you create the answers or notes. It's an organized way for you to categorize any topics you want to study in a visual way. What's even better? It's also mobile friendly so you can take your studying on the go!
 
 ## To get started
 1. Follow this [link](https://flipt-9463a12dabc6.herokuapp.com/) to the web app!
@@ -21,4 +21,5 @@ It's here! Flipt has arrived! An application that uses flash cards to help you l
 You may only have one flash card flipped over at a time. If you flip over another flash card before saving the current flash card, your answers or notes on that flash card will not be saved.
 
 ## Screenshots
-<img src='' width='400' />        <img src='' width='400' />
+<img src='public/screenshot1.png' width='400' />
+<img src='public/screenshot2.png' width='400' />
