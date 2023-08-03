@@ -19,11 +19,13 @@ const NewAccount = () => {
         headers: {
           'content-type': 'application/json'
         },
-        body: JSON.stringify({ username, password1 })
+        body: JSON.stringify({ 
+          username: username,
+          password: password1
+        })
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         if (data) {
           navigate('/home')
         } else {
