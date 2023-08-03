@@ -4,7 +4,6 @@
   font-size: 1rem;
   display: flex;
   min-height: 150px;
-  max-width: 250px;
   box-shadow: 0 0 5px 0 $shadows;
   background-color: $gray6;
   padding: 0.5rem;
@@ -12,26 +11,6 @@
   border: 1px solid $gray3;
   border-radius: 5px;
   word-wrap: break-word;
-
-  button {
-    width: 25px;
-    height: 25px;
-    border: none;
-    background-color: $gray6;
-    color: $gray5;
-  }
-
-  button:hover {
-    color: $gray3;
-  }
-
-  .check:hover {
-    color: $flash-card-done;
-  }
-
-  .close:hover {
-    color: $red;
-  }
 }
 
 .front {
@@ -50,46 +29,66 @@
     flex-direction: column;
     justify-content: space-between;
   }
+
+  button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: $gray6;
+    color: $gray4;
+  }
+
+  button:hover {
+    color: $primary-color;
+  }
+
+  .close:hover {
+    color: $red;
+  }
 }
 
 .back {
   flex-direction: column;
   background-color: $gray2;
+  box-shadow: 0 0 5px 2px $primary-color;
 
   textarea {
-    flex: 1;
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
     padding: 0.3rem;
     border: 1px solid $gray4;
+    resize: none;
   }
 
   div {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   button {
-    background-color: $gray2;
-    color: $gray3;
+    padding: 0.2rem 0.4rem;
+    border-radius: 5px;
+    border: none;
+    background-color: $gray6;
+    color: $gray1;
   }
 
   button:hover {
-    color: $gray5;
+    background-color: $gray4;
   }
 }
 
 .done {
-
   .check {
-    color: $flash-card-done;
+    color: $primary-color;
   }
 }
 
 @media screen and (min-width: 600px) {
   .front, .back {
     min-width: 250px;
+    max-width: 250px;
     margin: 0;
     justify-self: center;
   }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaArrowRight, FaArrowLeft, FaTimes, FaCheck } from 'react-icons/fa';
 import style from './TopicCard.module.scss';
+import TextareaAutosize from 'react-textarea-autosize';
 
 const TopicCard = ({ topic, setCurrTopic, currTopic, handleDeleteCard, handleStatusChange, handleSave }) => {
   const string = topic.answer;
@@ -47,14 +48,16 @@ const TopicCard = ({ topic, setCurrTopic, currTopic, handleDeleteCard, handleSta
   } else {
     return (
       <div className={`${style.back} ${topic.done && style.done}`}>
-        <textarea
+        <TextareaAutosize
           id='answer'
           name='answer'
           value={answer}
-          onChange={(e) => {setAnswer(e.target.value)}} />
+          onChange={(e) => {setAnswer(e.target.value)}}
+          minRows={5}
+          maxRows={15}/>
         <div>
-          <button aria-label='flip card to front' onClick={() => {handleSave(answer)}}>
-            <FaArrowLeft size={18}/>
+          <button aria-label='save answer' onClick={() => {handleSave(answer)}}>
+            SAVE
           </button>
         </div>
       </div>
